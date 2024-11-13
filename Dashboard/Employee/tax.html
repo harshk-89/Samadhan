@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>AdminHub</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="tax.css">
+    <script>
+        // JavaScript code to get the parameter from the URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            console.log('Parameter 1:', email);
+
+        });
+        // Do something with the parameter value
+
+        function submitGrievance() {
+            var serviceElement = document.getElementById("serviceDropdown");
+            if (serviceElement) {
+                // Access the content of the paragraph
+                var serviceContent = serviceElement.value;
+                console.log("Content of the paragraph:", serviceContent);
+            }
+
+            var query = document.getElementById("queryBox");
+            if (query) {
+                // Access the content of the paragraph
+                var query = query.value;
+                console.log("Content of the paragraph:", query);
+            }
+
+            var phoneNumber = document.getElementById("phoneNumber");
+            if (phoneNumber) {
+                // Access the content of the paragraph
+                var phoneNumber = phoneNumber.value;
+                console.log("Content of the paragraph:", phoneNumber);
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+
+            var request = {
+			email: email,
+            service: serviceContent,
+            query: query,
+            phoneNumber: phoneNumber
+		}
+
+		var requestUrl = "http://localhost:3000/addEmployeeGrievance" ;
+
+		fetch(requestUrl, {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			// You may need to include additional headers depending on your server requirements
+			},
+			body: JSON.stringify(request)
+			})
+			.then(response => {
+			// Check if the response status is OK (200)
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
+            alert("Grievance submitted successfully");
+			// Parse the JSON data in the response
+			return response.json();
+			})
+			.catch(error => {
+			// Handle any errors that occurred during the fetch
+			console.error('Fetch error:', error);
+		});
+        }
+
+    </script>
+</head>
+<body>
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-user'></i>
+            <span class="text">Employee Graviences</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="onlineservices.html">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="onlineservices.html">
+                    <i class='bx bx-search-alt' ></i>
+                    <span class="text">Departmental Dashboard</span>
+                </a>
+            </li>
+            <li >
+                <a href="graviences.html">
+                    <i class='bx bxs-edit-alt' ></i>
+                    <span class="text">CGR_DASHBOARD</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i class='bx bx-rupee'></i>
+                    <span class="text">My Graviences</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-landmark' ></i>
+                    <span class="text">APAR</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bxs-log-out-circle' ></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+        <!-- NAVBAR -->
+        <nav>
+            <i class='bx bx-menu' ></i>
+            <form action="#">
+                <div class="form-input">
+                    <button type="submit" class="search-btn"><i class='bx bx-searc' ></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <a href="#" class="profile">
+                <img src="harsh.jpeg">
+            </a>
+        </nav>
+        <!-- NAVBAR -->
+        <main>
+            <div class="grievance-form">
+                <div class="services-section">
+                    <h2>Select a Service</h2>
+                    <select id="serviceDropdown">
+                        <option value="sewage">Salary and allowances</option>
+                        <option value="water">leave</option>
+                        <option value="road">human resource</option>
+                        <option value="garbage">Any Other</option>
+                        <option value="electricity">Electricity</option>
+                    </select>
+                </div>
+				<div class="other-service-section" style="display:none;">
+					<h2>Other Service</h2>
+					<input type="text" id="otherServiceInput" placeholder="Enter the other service">
+				</div>				
+                <div class="query-section">
+                    <h2>Query</h2>
+                    <textarea id="queryBox" rows="4" cols="50" placeholder="Enter your query here..."></textarea>
+                </div>
+
+                <div class="phone-section">
+                    <h2>Phone Number</h2>
+                    <input type="text" id="phoneNumber" placeholder="Enter Phone Number">
+                </div>
+                <div class="captcha-section">
+                    <div class="captcha">
+                        <h2>CAPTCHA</h2>
+                        <br>
+                        <input type="text" id="enteredCaptcha" placeholder="Enter CAPTCHA">
+                        <br>
+                        <span id="captcha" class="captcha-text">ABC123</span>
+                        <div class="submit-section">
+							<div class="verification-message" id="verification-message" style="display: none;"></div>
+                            <button id="submitGrievance" onclick=submitGrievance()>Submit Grievance</button>
+                        </div>
+                    </div>
+                </div>		
+            </div>
+        </main>
+    </section>
+    <!-- CONTENT -->
+    <script src="script.js"></script>
+</body>
+</html>

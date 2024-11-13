@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="Navbar.css">
+  <link rel="stylesheet" href="Footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head>
+
+<body>
+  <header>
+  <div class="navbar-one" >
+    <div class="header-peak">
+      <ul class="nav">
+        <li class="nav-item">
+          <span id="currentDateTime" class="nav-link link-light"></span>
+        </li>
+        <li class="nav-item">
+          <button id="decfont" class="nav-link link-light px-2 font-inc font-btn" id="decfont"> A<sup>-</sup></button>
+        </li>
+        <li class="nav-item">
+          <button id="resetFont" class="nav-link link-light px-2 font-inc active font-btn" id="resetFont"> A</button>
+        </li>
+        <li class="nav-item">
+          <button id="incfont" class="nav-link link-light px-2 font-inc font-btn" id="incfont"> A<sup>+</sup></button>
+        </li>
+      </ul>
+      <ul class="nav-item">
+        <div class="language-dropdown">
+          <button class="btn btn-tertiary dropdown-toggle" id="dropdown-text-mob" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="language-text">English</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">
+              <a class="nav-link f16 link-light english-box language" href="/en.html">
+                <div class="en-language active-language">
+                  <span class="language-icon">A</span><BR>
+                  <span class="language-text">English</span>
+                </div>
+              </a>
+            </li>
+            <li class="dropdown-item">
+              <a class="nav-link f16 language hindi-box link-light" href="/hi.html">
+                <div class="hin-language">
+                  <span class="language-icon">अ</span><BR>
+                  <span class="language-text">Hindi</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar-two">
+    <nav class="navbar-two" style="background: linear-gradient(to right, saffron, green); width: 100%; margin-left: 0;">
+      <div class="logos">
+        <a href="home.html">
+          <img src="emblem.png">
+          <img src="logo.png" alt="SAMADHAN logo">
+      </a>
+
+      </div>
+      <ul class="navbar-list ">
+
+        <li>
+          <a href="#home" class="navbar-link hover-underline-animation" data-nav-link>Home</a>
+        </li>
+        <li>
+          <a href="#about" class="navbar-link hover-underline-animation" data-nav-link>About AtalNagar</a>
+        </li>
+        <li>
+          <a href="#reports" class="navbar-link hover-underline-animation" data-nav-link>Maps & Reports</a>
+        </li>
+        <li>
+          <a href="#masterplan" class="navbar-link hover-underline-animation" data-nav-link>Master Plan 2028</a>
+        </li>
+        <li>
+          <a href="#help" class="navbar-link hover-underline-animation" data-nav-link>Help</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<nav aria-label="breadcrumb">
+  <ol class="login breadcrumb" id="enBreadcrumb">
+    <li class="breadcrumb-item"><a href="/en.html">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Login</li>
+  </ol>
+  <ol class="login breadcrumb" id="hindiBreadcrumb" style="display: none;">
+      <li class="breadcrumb-item"><a href="/hi.html">होम पेज</a></li>
+      <li class="breadcrumb-item active" aria-current="page">लॉग इन</li>
+    </ol>
+</nav>
+<section class= "Dashboard">
+  <div class="inFormBackground">
+    <div class="welcome-text-center-left">
+      <h2>Welcome to SAMADHAN</h2>
+    </div>
+    <form  style=" transform: translate(-50%, -50%);" onsubmit="return false">
+      <div class="title">
+        <h3>Login</h3>
+      </div>
+      <div class="inputGroup">
+        <div class="inputWithIcon">
+          <i class="fas fa-user"></i>
+          <label for="email">Email</label>
+        </div>
+        <input type="email" placeholder="Enter Email" id="email">
+        <p id="emailRemark" class="remark"></p>
+
+      </div>
+      <div class="inputGroup">
+        <div class="inputWithIcon">
+          <i class="fas fa-lock"></i>
+          <label for="password">Password</label>
+
+        </div>
+        <input type="password" placeholder="Enter Password" id="password">
+        <p id="passwordRemark" class="remark"></p>
+        <i class="fas fa-eye-slash" id="togglePassword"></i>
+        <div class="forgot-pass" style="padding-left: 170px;"><a href="#">Forgot Password?</a></div>
+
+      </div>
+      
+    <div class="inputGroup">
+        <div class="inputWithIcon">
+          <i class="fas fa-sign-in-alt"></i>
+        <label for="loginType">Login As</label>
+      </div>
+        <div class="iconDropdown">
+          <select id="loginType">
+          <option value="citizen">Citizen</option>
+          <option value="employee">Employee</option>
+          <option value="admin">Administrator</option>
+
+          </select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+        <button class="submitForm" onclick="login()">Log In</button>
+      <div>Not a Member? <a href="SignUp.html"><span class="Signup">Register</span></a></div>
+    </form>
+</div>
+
+</section>
+
+<footer class="footer">
+  <div class="waves">
+    <div class="wave" id="wave1"></div>
+    <div class="wave" id="wave2"></div>
+    <div class="wave" id="wave3"></div>
+    <div class="wave" id="wave4"></div>
+  </div>
+  <div class="row">
+      <div class="col">
+         <ul>
+          <li> <div class="logo"><a href="#"><h2>समाधान</h2></a></div></li>
+          <li> <div class="logo"><a href="#">SAMADHAN</a></div></li>
+
+          
+          <li><p></p></li>
+         </ul>
+
+      </div>
+      <div class="col">
+          <ul>
+              <li>Tel: 0771-2512500</li>
+              <li>Fax: 0771-2512400</li>
+              <li>Helpdesk Contact:07712211501</li>
+          </ul>
+      </div>
+      <div class="col">
+          <ul>
+              <li>SAMADHAN Sadan,</li>
+              <li>North Block, Sector 11, </li>
+              <li> Nava Raipur Atal Nagar, 492002 (C.G.)</li>
+          </ul>
+      </div>
+      <div class="col">
+        <ul class="social-list">
+          <li>
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook"></i> <!-- Use the appropriate Font Awesome class for Facebook -->
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i> <!-- Use the appropriate Font Awesome class for Twitter -->
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i> <!-- Use the appropriate Font Awesome class for YouTube -->
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i> <!-- Use the appropriate Font Awesome class for Instagram -->
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+  </div>
+  <p>Copyright &copy; 2023<br>This Application Belongs to SAMADHAN-AtalNagar Authority<br>   All Rights Reserved by Team <strong> TriAksh</strong></p>
+</footer>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="login.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+// Font size control
+const currentFontSize = 16; // Initial font size in pixels
+let fontSize = currentFontSize;
+
+document.getElementById("incfont").addEventListener("click", function() {
+  fontSize += 2; // Increase font size by 2 pixels
+  document.body.style.fontSize = fontSize + "px";
+});
+
+document.getElementById("decfont").addEventListener("click", function() {
+  fontSize -= 2; // Decrease font size by 2 pixels
+  document.body.style.fontSize = fontSize + "px";
+});
+
+document.getElementById("resetFont").addEventListener("click", function() {
+  fontSize = currentFontSize; // Reset to the default font size
+  document.body.style.fontSize = fontSize + "px";
+});
+
+// Date and time display
+function updateDateTime() {
+  const dateTimeElement = document.getElementById("currentDateTime");
+  const now = new Date();
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const dayOfWeek = daysOfWeek[now.getDay()]; // Get the day of the week
+  const date = now.toLocaleDateString();
+  const time = now.toLocaleTimeString();
+  const dateTimeString = `${dayOfWeek}, ${date} ${time}`;
+  dateTimeElement.textContent = dateTimeString;
+}
+function updateDateTime() {
+    const currentDate = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+    const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+    document.getElementById('currentDateTime').textContent = formattedDate;
+}
+
+// Update date and time every second
+updateDateTime();
+setInterval(updateDateTime, 1000);
+});
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+  
+    togglePassword.addEventListener('click', function () {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePassword.classList.remove('fa-eye-slash');
+        togglePassword.classList.add('fa-eye');
+      } else {
+        passwordInput.type = 'password';
+        togglePassword.classList.remove('fa-eye');
+        togglePassword.classList.add('fa-eye-slash');
+      }
+    });
+
+    $(document).ready(function() {
+  var navbar = $('.navbar-two');
+  var top = navbar.offset().top;
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > top) {
+      navbar.addClass('fixed');
+    } else {
+      navbar.removeClass('fixed');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  // ...
+
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const emailRemark = document.getElementById("emailRemark");
+  const passwordRemark = document.getElementById("passwordRemark");
+
+  document.querySelector("form").addEventListener("submit", function(event) {
+    emailRemark.style.display = "none"; // Hide the email remark
+    passwordRemark.style.display = "none"; // Hide the password remark
+
+    // Email validation
+    const email = emailInput.value;
+    if (!isValidEmail(email)) {
+      emailRemark.textContent = "Invalid email address";
+      emailRemark.style.display = "block";
+      event.preventDefault(); // Prevent form submission
+    }
+
+    // Password validation (you can add your own password validation logic)
+    const password = passwordInput.value;
+    if (!isValidPassword(password)) {
+      passwordRemark.textContent = "Invalid password";
+      passwordRemark.style.display = "block";
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+  
+  // ...
+
+  // Email validation function (you can modify this as needed)
+  function isValidEmail(email) {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+  }
+
+    // Password validation function
+      function isValidPassword(password) {
+      const passw = /^[A-Za-z]\w{7,14}$/;
+      if (password.match(passw)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  function login() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const loginas = document.getElementById('loginType').value;
+
+  if(loginas === "admin" && email === "admin" && password === "password") {
+    window.location.href = "../Dashboard/Administration/civic.html?email=" + encodeURIComponent(email);
+    return;
+  } else {
+
+  const request = {
+    email: email,
+    password: password,
+    loginas: loginas
+  }
+
+   var requestUrl = "http://localhost:3000/login" ;
+
+   fetch(requestUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // You may need to include additional headers depending on your server requirements
+    },
+    body: JSON.stringify(request)
+  })
+    .then(response => {
+      // Check if the response status is OK (200)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      // Parse the JSON data in the response
+      return response.json();
+    })
+    .then(data => {
+      // Handle the JSON data returned from the server
+      console.log('Data from the server:', data);
+      window.location.href = "../Dashboard/Employee/Edashboard.html?email=" + encodeURIComponent(email);
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the fetch
+      console.error('Fetch error:', error);
+    });
+  }
+}
+
+    const togglePassword = document.getElementById("togglePassword");
+
+  togglePassword.addEventListener("click", function () {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      togglePassword.classList.remove("fa-eye-slash");
+      togglePassword.classList.add("fa-eye");
+    } else {
+      passwordInput.type = "password";
+      togglePassword.classList.remove("fa-eye");
+      togglePassword.classList.add("fa-eye-slash");
+    }
+  });
+});
+const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const mysql = require('mysql');
+
+const app = express();
+const port = 3000;
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'your-mysql-username',
+  password: 'your-mysql-password',
+  database: 'your-database-name'
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('Database connection failed:', err);
+    return;
+  }
+  console.log('Connected to MySQL database');
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ secret: 'your-secret-key', resave: true, saveUninitialized: true }));
+
+// Serve static files (e.g., CSS and JavaScript)
+app.use(express.static('public'));
+
+// Route for the login page
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/login.html');
+});
+
+// Route for handling login POST request
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+
+  db.query(query, [username, password], (err, results) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+
+    if (results.length > 0) {
+      req.session.user = results[0];
+      res.redirect('/userdashboard.html');
+    } else {
+      res.send('Login failed. Please try again.');
+    }
+  });
+});
+
+// Route for the user dashboard
+app.get('/dashboard', (req, res) => {
+  if (req.session.user) {
+    res.sendFile(__dirname + '/dashboard.html');
+  } else {
+    res.redirect('/login');
+  }
+});
+
+app.listen(port, () => {
+  console.log('App listening on port ${port}');
+});
+
+
+  </script>
+  
+</body>
+
+</html>

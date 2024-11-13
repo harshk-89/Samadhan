@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> -->
+	<link rel="stylesheet" href="employedashboard.css">
+	<title>Employee dashboard</title>
+	<script>
+		
+		var emailAddr;
+		document.addEventListener('DOMContentLoaded', function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const email = urlParams.get('email');
+			console.log('Parameter 1:', email);
+
+		var request = {
+			email: email
+		}
+
+		var requestUrl = "http://localhost:3000/getCitizen" ;
+
+		fetch(requestUrl, {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			// You may need to include additional headers depending on your server requirements
+			},
+			body: JSON.stringify(request)
+			})
+			.then(response => {
+			// Check if the response status is OK (200)
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			// Parse the JSON data in the response
+			return response.json();
+			})
+			.then(data => {
+			// Handle the JSON data returned from the server
+			console.log('Data from the server:', data);
+			var name = data.data.Name;
+			emailAddr = data.data.Email;
+			var contactNo = data.data.ContactNo;
+			var aadhar = data.data.AadharNumber;
+			var gender = data.data.Gender;
+			var city = data.data.City;
+			var pincode = data.data.Pincode;
+			var dob = data.data.DOB;
+			var address = data.data.Address;
+
+
+			console.log(name);
+			console.log(emailAddr);
+
+			const nameElement = document.getElementById('name');
+
+			if (nameElement) {
+				nameElement.innerText = name;
+			}
+
+			const emailElement = document.getElementById('email');
+
+			if (emailElement) {
+				emailElement.innerText = emailAddr;
+			}
+
+			const contactElement = document.getElementById('contact');
+
+			if (contactElement) {
+				contactElement.innerText = contactNo;
+			}
+
+			const aadharElement = document.getElementById('aadhar');
+
+			if (aadharElement) {
+				aadharElement.innerText = aadhar;
+			}
+
+			const genderElement = document.getElementById('gender');
+
+			if (genderElement) {
+				genderElement.innerText = gender;
+			}
+
+			const pincodeElement = document.getElementById('pincode');
+
+			if (pincodeElement) {
+				pincodeElement.innerText = pincode;
+			}
+
+			const cityElement = document.getElementById('city');
+
+			if (cityElement) {
+				cityElement.innerText = city;
+			}
+
+			const dobElement = document.getElementById('dob');
+
+			if (dobElement) {
+				dobElement.innerText = dob;
+			}
+
+			const addressElement = document.getElementById('address');
+
+			if (addressElement) {
+				addressElement.innerText = address;
+			}
+
+			// window.location.href = "../Dashboard/Employee/Edashboard.html?email=" + encodeURIComponent(email);
+			})
+			.catch(error => {
+			// Handle any errors that occurred during the fetch
+			console.error('Fetch error:', error);
+		});
+
+	});
+
+		function submitgreviance() {
+			console.log("submit grievance");
+			console.log(emailAddr);
+
+			window.location.href = "tax.html?email=" + encodeURIComponent(emailAddr);
+		}
+	</script>
+
+</head>
+<body>
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-user'></i>
+			<span class="text">EMPLOYEE INFO</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="onlineservices.html">
+					<i class='bx bx-search-alt' ></i>	
+					<span class="text">Departmental Page</span>
+				</a>
+			</li>
+			<li >
+				<a href="graviences.html">
+					<i class='bx bxs-edit-alt' ></i>
+					<span class="text">CGR_DASHBOARD</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" onclick="submitgreviance()">
+					<i class='bx bx-rupee'></i>
+					<span class="text">My Graviences</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-landmark' ></i>
+					<span class="text">APAR</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">
+<!-- NAVBAR -->
+<nav>
+	<i class='bx bx-menu'></i>
+	<form action="#">
+		<div class="form-input">
+			<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+		</div>
+	</form>
+	<input type="checkbox" id="switch-mode" hidden>
+	<label for="switch-mode" class="switch-mode"></label>
+	<a href="#" class="profile">
+		<img src="harsh.jpeg" alt="USER IMAGE">
+	</a>
+</nav>
+<!-- NAVBAR -->
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Employee Dashboard</h1>
+				</div>
+			</div>
+			<div class="table-data">
+				<div><h1>Employee Information</h1>
+					<img src="harsh.jpeg" alt="" style="height: 10rem;">
+				</div>
+				
+				<div class="order">
+					<div class="order-box box1">
+						<div>
+							<p class="new-p-tags"><strong>Name:</strong> </p> <p class="new-p-tags" id="name">John Doe
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Email:</strong> </p> <p class="new-p-tags" id="email">john.doe@example.com</p>
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Contact Number:</strong> </p> <p class="new-p-tags" id="contact">+1 123-456-7890</p>
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Aadhar Number:</strong> </p> <p class="new-p-tags" id="aadhar">1234-5678-9012</p>
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Gender:</strong> </p> <p class="new-p-tags" id="gender">Male</p>
+						</div>
+					</div>
+					<div class="order-box box2">
+						<div>
+							<p class="new-p-tags"><strong>City:</strong> </p> <p class="new-p-tags" id="city">New York</p>
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Pincode:</strong> </p> <p class="new-p-tags" id="pincode"></p>10001</p>
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Date of Birth:</strong> </p> <p class="new-p-tags" id="dob"></p> January 1, 1980</p>
+						</div>
+						<div>
+							<p class="new-p-tags"><strong>Address:</strong> </p> <p class="new-p-tags" id="address"></p> 123 Main Street</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="activity-office-container">
+			<div class="recent-activities">
+				<h1>Recent Activities</h1>
+				<marquee behavior="scroll" direction="up" scrollamount="4.5">
+					<div class="activity">
+						<span class="activity-icon">
+							<i class="bx bx-bell"></i>
+						</span>
+						<span class="activity-text">You have a new message from John Doe.</span>
+					</div>
+				<div class="activity-item">
+					<i class='bx bx-check'></i>
+					<p>Completed project X ahead of schedule</p>
+				</div>
+				<div class="activity-item">
+					<i class='bx bx-message'></i>
+					<p>Received positive feedback from a client</p>
+				</div>
+				<div class="activity-item">
+					<i class='bx bx-task'></i>
+					<p>Started working on a new project Y</p>
+				</div>
+				<div class="activity-item">
+					<i class='bx bx-check'></i>
+					<p>Attended a company meeting with the CEO</p>
+				</div>
+				<div class="activity-item">
+					<i class='bx bx-message'></i>
+					<p>Submitted a progress report for project Z</p>
+				</div>
+				</marquee>
+			</div>
+			<div class="order-box box3">
+				<h2>Office Orders</h2>
+				<ul class="office-order-list">
+					<li>
+						<a href="#">View Office Orders</a>
+						<span class="order-count">5 New</span>
+					</li>
+					<li>
+						<a href="#">Submit Request</a>
+					</li>
+					<li>
+						<a href="#">Order History</a>
+					</li>
+				</ul>
+			</div>
+			</div>
+			
+		</main>
+		<!-- MAIN -->
+		<footer>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p style="text-align: center;">&copy; 2023 Employee Dashboard</p>
+        </footer>
+	</section>
+	<!-- CONTENT -->
+
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="graviences.css">
+	<title>User Graviences</title>
+</head>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-user'></i>
+			<span class="text">USER QUERY</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="Edashboard.html">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="onlineservices.html">
+					<i class='bx bx-search-alt' ></i>	
+					<span class="text">Departmental Page</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="graviences.html">
+					<i class='bx bxs-edit-alt' ></i>
+					<span class="text">CGR_DASHBOARD</span>
+				</a>
+			</li>
+			<li>
+				<a href="tax.html">
+					<i class='bx bx-rupee'></i>
+					<span class="text">My Graviences</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-landmark' ></i>
+					<span class="text">APAR</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Search Query ID </a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search query id here...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="profile">
+				<img src="harsh.jpeg" alt="USER IMAGE">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>USER QUERIES</h1>
+				</div>
+			</div>
+	
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>User Past Querie Status</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>SQID</th>
+								<th>REGISTERED DATE</th>
+								<th>DEPARTMENT</th>
+								<th>STATUS</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>SQID_001</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>ELECTRICITY</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>SQID_002</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>WATER</td>
+								<td><span class="status pending">Pending</span></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>SQID_003</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>SEWAGE</td>
+								<td><span class="status process">Process</span></td>
+
+							</tr>
+							<tr>
+								<td>
+									<p>SQID_004</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>SEWAGE</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>SQID_005</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>ELECTRICITY</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script src="graviences.js"></script>
+</body>
+</html>

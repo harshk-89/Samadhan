@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="one.css">
+	<title>online services</title>
+	
+</head>
+<body>
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-user'></i>
+			<span class="text">ADMINISTRATION</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="civic.html">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Civic Department</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="janta.html">
+					<i class='bx bxs-edit-alt' ></i>
+					<span class="text">Janta Connect</span>
+				</a>
+			</li>
+			<li>
+				<a href="karamchari.html">
+                    <i class='bx bxs-landmark' ></i>
+					<span class="text">Karamchari Connect</span>
+				</a>
+			</li>
+			<li>
+				<a href="budget.html">
+					<i class='bx bx-rupee'></i>
+					<span class="text">Budget and Tax</span>
+				</a>
+			</li>
+			<li>
+				<a href="infra.html">
+					<i class='bx bxs-landmark' ></i>
+					<span class="text">Social Infrastructure</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Search Query ID </a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search query id here...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="profile">
+				<img src="harsh.jpeg" alt="USER IMAGE">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+		<section id="employees" class="employees-section">
+			
+			<h1 class="section-heading">CITIZEN GRIEVANCES</h1>
+			<table class="employee-table">
+				<thead>
+					<tr>
+						<th style="width: 6rem;">S_No.</th>
+						<th>Query</th>
+						<th>Employee alloted</th>
+                        <th>Query Date</th>
+                        <th>Grievant</th>
+                        <th>Department</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+					<!-- <tr>
+						<td>1</td>
+                        <td>E123</td>
+						<td>John Doe</td>
+                        <td>2023-01-15</td>
+						<td>35677895</td>
+                        <td>Transportation</td>
+						<td>Pending</td>
+					</tr>
+					<tr>
+						<td>2</td>
+                        <td>T123</td>
+						<td>Jane Smith</td>
+                        <td>2023-02-20</td>
+						<td>247864576</td>
+						<td>Water</td>
+						<td>Completed</td>
+					</tr>
+					<tr>
+						<td>3</td>
+                        <td>A123</td>
+						<td>Michael Johnson</td>
+                        <td>2023-03-10</td>
+						<td>1589776589</td>
+                        <td>Civil</td>
+						<td>Completed</td>
+					</tr>
+					<tr>
+						<td>4</td>
+                        <td>T126</td>
+						<td>Sarah Davis</td>
+                        <td>2023-04-05</td>
+                        <td>1589745767</td>
+						<td>Seawage</td>
+						<td>Pending</td>
+					</tr> -->
+				</tbody>
+			</table>
+		</section>
+		<script>
+			// Sample data array
+			var requestUrl = "http://localhost:3000/getCitizenGrievances" ;
+
+		fetch(requestUrl, {
+			method: 'GET',
+			headers: {
+			'Content-Type': 'application/json'
+			// You may need to include additional headers depending on your server requirements
+			}
+		})
+			.then(response => {
+			// Check if the response status is OK (200)
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			// Parse the JSON data in the response
+			return response.json();
+			})
+			.then(data => {
+			// Handle the JSON data returned from the server
+			console.log('Data from the server:', data);			
+			// Get the table body element
+			var tableBody = document.getElementById('tableBody');
+		
+			var dataArray = ["Jane Doe", "John Smith", "Will Hunting"]
+			var index = 0;
+			// Loop through the array and create table rows
+			data.data.forEach(function(data) {
+			  if(index == 2) {
+				index = 0;
+			  } else {
+				index = index + 1;
+			  }
+			  var row = document.createElement('tr');
+		
+			  // Create and append table cells
+			  var nameCell = document.createElement('td');
+			  nameCell.textContent = data.sqid;
+			  row.appendChild(nameCell);
+		
+			  var ageCell = document.createElement('td');
+			  ageCell.textContent = data.Query;
+			  row.appendChild(ageCell);
+		
+			  var cityCell = document.createElement('td');
+			  cityCell.textContent = dataArray[index];
+			  row.appendChild(cityCell);
+
+			  var cityCell = document.createElement('td');
+			  cityCell.textContent = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
+			  row.appendChild(cityCell);
+
+			  var cityCell = document.createElement('td');
+			  cityCell.textContent = data.gmail;
+			  row.appendChild(cityCell);
+
+			  var cityCell = document.createElement('td');
+			  cityCell.textContent = data.services;
+			  row.appendChild(cityCell);
+
+			  var cityCell = document.createElement('td');
+			  cityCell.textContent = data.status;
+			  row.appendChild(cityCell);
+		
+			  // Append the row to the table body
+			  tableBody.appendChild(row);
+			})
+		})
+			.catch(error => {
+			// Handle any errors that occurred during the fetch
+			console.error('Fetch error:', error);
+			});
+		
+		  </script>
+
+</body>
+</html>

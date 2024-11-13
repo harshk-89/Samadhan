@@ -1,0 +1,242 @@
+  <!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SignUp</title>
+  <link rel="stylesheet" href="Navbar.css">
+  <link rel="stylesheet" href="Footer.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'><link rel="stylesheet" href="./signup.css">
+
+</head>
+<body>
+  <header>
+    <div class="navbar-one" >
+      <div class="header-peak">
+        <ul class="nav">
+          <li class="nav-item">
+            <span id="currentDateTime" class="nav-link link-light"></span>
+          </li>
+          <li class="nav-item">
+            <button id="decfont" class="nav-link link-light px-2 font-inc font-btn" id="decfont"> A<sup>-</sup></button>
+          </li>
+          <li class="nav-item">
+            <button id="resetFont" class="nav-link link-light px-2 font-inc active font-btn" id="resetFont"> A</button>
+          </li>
+          <li class="nav-item">
+            <button id="incfont" class="nav-link link-light px-2 font-inc font-btn" id="incfont"> A<sup>+</sup></button>
+          </li>
+        </ul>
+        <ul class="nav-item">
+          <div class="language-dropdown">
+            <button class="btn btn-tertiary dropdown-toggle" id="dropdown-text-mob" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="language-text">English</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a class="nav-link f16 link-light english-box language" href="/en.html">
+                  <div class="en-language active-language">
+                    <span class="language-icon">A</span><BR>
+                    <span class="language-text">English</span>
+                  </div>
+                </a>
+              </li>
+              <li class="dropdown-item">
+                <a class="nav-link f16 language hindi-box link-light" href="/hi.html">
+                  <div class="hin-language">
+                    <span class="language-icon">अ</span><BR>
+                    <span class="language-text">Hindi</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="navbar-two">
+      <nav class="navbar-two" style="background: linear-gradient(to right, saffron, green); width: 100%; margin-left: 0;">
+        <div class="logos">
+          <a href="home.html">
+            <img src="emblem.png">
+            <img src="logo.png" alt="SAMADHAN logo">
+        </a>
+  
+        </div>
+        <ul class="navbar-list ">
+  
+          <li>
+            <a href="#home" class="navbar-link hover-underline-animation" data-nav-link>Home</a>
+          </li>
+          <li>
+            <a href="#about" class="navbar-link hover-underline-animation" data-nav-link>About AtalNagar</a>
+          </li>
+          <li>
+            <a href="#reports" class="navbar-link hover-underline-animation" data-nav-link>Maps & Reports</a>
+          </li>
+          <li>
+            <a href="#masterplan" class="navbar-link hover-underline-animation" data-nav-link>Master Plan 2028</a>
+          </li>
+          <li>
+            <a href="#help" class="navbar-link hover-underline-animation" data-nav-link>Help</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="welcome-text-center-left">
+    <h2>Welcome to SAMADHAN</h2>
+  </div>
+      <form action="#" class="form">
+        <h1 class="text-center">Citizen Registration Form
+        </h1>
+        <!-- Progress bar -->
+        <div class="progressbar">
+          <div class="progress" id="progress"></div>
+          
+          <div
+            class="progress-step progress-step-active"
+            data-title="Intro"
+          ></div>
+          <div class="progress-step" data-title="Contact"></div>
+          <div class="progress-step" data-title="ID"></div>
+          <div class="progress-step" data-title="Address"></div>
+        </div>
+  
+        <!-- Steps -->
+        <div class="form-step form-step-active">
+          <div class="input-group">
+            <label for="email">Email ID</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" />
+          </div>
+          <div class="">
+            <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+          </div>
+        </div>
+        <div class="form-step">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div class="input-group">
+            <label for="contact">Contact Number</label>
+            <input type="text" name="contact" id="contact" />
+          </div>
+          <div class="inputGroup">
+            <label for="gender">Gender</label>
+            <div class="iconDropdown">
+            <select id="gender">
+                <option value="male">Male </option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+            </select>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>          
+          <div class="btns-group">
+            <a href="#" class="btn btn-prev">Previous</a>
+            <a href="#" class="btn btn-next">Next</a>
+          </div>
+        </div>
+        <div class="form-step">
+          <div class="input-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" id="dob" />
+          </div>
+          <div class="input-group">
+            <label for="ID">Aadhaar ID</label>
+            <input type="number" name="ID" id="ID" />
+          </div>
+          <div class="btns-group">
+            <a href="#" class="btn btn-prev">Previous</a>
+            <a href="#" class="btn btn-next">Next</a>
+          </div>
+        </div>
+        <div class="form-step">
+          <div class="input-group">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" />
+          </div>
+          <div class="input-group">
+            <label for="pincode">City - Pin Code</label>
+            <input
+              type="text"
+              name="pincode"
+              id="pincode"
+            />
+          </div>
+          <div class="btns-group">
+            <a href="#" class="btn btn-prev">Previous</a>
+            <input type="button" value="Submit" class="btn" onclick="signup()" />
+          </div>
+        </div>
+      </form>
+
+      <footer class="footer">
+        <div class="waves">
+          <div class="wave" id="wave1"></div>
+          <div class="wave" id="wave2"></div>
+          <div class="wave" id="wave3"></div>
+          <div class="wave" id="wave4"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+               <ul>
+                <li> <div class="logo"><a href="#"><h2>समाधान</h2></a></div></li>
+                <li> <div class="logo"><a href="#">SAMADHAN</a></div></li>
+      
+                
+                <li><p></p></li>
+               </ul>
+      
+            </div>
+            <div class="col">
+                <ul>
+                    <li>Tel: 0771-2512500</li>
+                    <li>Fax: 0771-2512400</li>
+                    <li>Helpdesk Contact:07712211501</li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li>SAMADHAN Sadan,</li>
+                    <li>North Block, Sector 11, </li>
+                    <li> Nava Raipur Atal Nagar, 492002 (C.G.)</li>
+                </ul>
+            </div>
+            <div class="col">
+              <ul class="social-list">
+                <li>
+                  <a href="#" class="social-link">
+                    <i class="fab fa-facebook"></i> <!-- Use the appropriate Font Awesome class for Facebook -->
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i> <!-- Use the appropriate Font Awesome class for Twitter -->
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-link">
+                    <i class="fab fa-youtube"></i> <!-- Use the appropriate Font Awesome class for YouTube -->
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-link">
+                    <i class="fab fa-instagram"></i> <!-- Use the appropriate Font Awesome class for Instagram -->
+                  </a>
+                </li>
+              </ul>
+              
+            </div>
+        </div>
+        <p>Copyright &copy; 2023<br>This Application Belongs to SAMADHAN-AtalNagar Authority<br>   All Rights Reserved by Team <strong> TriAksh</strong></p>
+      </footer>
+<script  src="signup.js"></script>
+
+</body>
+</html>

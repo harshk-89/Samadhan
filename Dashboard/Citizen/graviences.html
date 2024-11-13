@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="graviences.css">
+	<title>User Graviences</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            console.log('Parameter 1:', email);
+
+        });
+        // Do something with the parameter value
+
+        function submitGrievance() {
+            var serviceElement = document.getElementById("serviceDropdown");
+            if (serviceElement) {
+                // Access the content of the paragraph
+                var serviceContent = serviceElement.value;
+                console.log("Content of the paragraph:", serviceContent);
+            }
+
+            var query = document.getElementById("queryBox");
+            if (query) {
+                // Access the content of the paragraph
+                var query = query.value;
+                console.log("Content of the paragraph:", query);
+            }
+
+            var phoneNumber = document.getElementById("phoneNumber");
+            if (phoneNumber) {
+                // Access the content of the paragraph
+                var phoneNumber = phoneNumber.value;
+                console.log("Content of the paragraph:", phoneNumber);
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+
+            var request = {
+			email: email,
+            service: serviceContent,
+            query: query,
+            phoneNumber: phoneNumber
+		}
+
+		var requestUrl = "http://localhost:3000/addCitizenGrievance" ;
+
+		fetch(requestUrl, {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			// You may need to include additional headers depending on your server requirements
+			},
+			body: JSON.stringify(request)
+			})
+			.then(response => {
+			// Check if the response status is OK (200)
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
+            alert("Grievance submitted successfully");
+			// Parse the JSON data in the response
+			return response.json();
+			})
+			.catch(error => {
+			// Handle any errors that occurred during the fetch
+			console.error('Fetch error:', error);
+		});
+        }
+	</script>
+</head>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-user'></i>
+			<span class="text">USER QUERY</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="userdasboard.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="onlineservices.html">
+					<i class='bx bx-search-alt' ></i>					<span class="text">My Services</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="graviences.html">
+					<i class='bx bxs-edit-alt' ></i>
+					<span class="text">My Graviences</span>
+				</a>
+			</li>
+			<li>
+				<a href="tax.html">
+					<i class='bx bx-rupee'></i>
+					<span class="text">Taxes</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-landmark' ></i>
+					<span class="text">Property</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Search Query ID </a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search query id here...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="profile">
+				<img src="harsh.jpeg" alt="USER IMAGE">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Register Your Grievances Here</h1>
+				</div>
+			</div>
+		
+			<!-- Grievance Form -->
+			<div class="grievance-form">
+                <div class="services-section">
+                    <h2>Select a Service</h2>
+                    <select id="serviceDropdown">
+                        <option value="sewage">Sewage</option>
+                        <option value="water">Water</option>
+                        <option value="road">Road</option>
+                        <option value="garbage">Garbage Collection</option>
+                        <option value="electricity">Electricity</option>
+                    </select>
+                </div>
+
+                <div class="query-section">
+                    <h2>Query</h2>
+                    <textarea id="queryBox" rows="4" cols="50" placeholder="Enter your query here..."></textarea>
+                </div>
+
+                <div class="phone-section">
+                    <h2>Phone Number</h2>
+					<input type="text" id="enteredCaptcha" placeholder="Enter CAPTCHA">
+                </div>
+                <div class="captcha-section">
+                    <div class="captcha">
+                        <h2>CAPTCHA</h2>
+                        <br>
+                        <input type="text" id="enteredCaptcha" placeholder="Enter CAPTCHA">
+                        <br>
+                        <span id="captcha" class="captcha-text">ABC123</span>
+                        <div class="submit-section">
+                            <div id="verification-message"></div>
+                            <button id="submitGrievance" onclick=submitGrievance()>Submit Grievance</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Your Past Querie Status</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>SQID</th>
+								<th>REGISTERED DATE</th>
+								<th>DEPARTMENT</th>
+								<th>STATUS</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>SQID_001</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>ELECTRICITY</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>SQID_002</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>WATER</td>
+								<td><span class="status pending">Pending</span></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>SQID_003</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>SEWAGE</td>
+								<td><span class="status process">Process</span></td>
+
+							</tr>
+							<tr>
+								<td>
+									<p>SQID_004</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>SEWAGE</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>SQID_005</p>
+								</td>
+								<td>01-10-2021</td>
+								<td>ELECTRICITY</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script src="graviences.js"></script>
+</body>
+</html>
